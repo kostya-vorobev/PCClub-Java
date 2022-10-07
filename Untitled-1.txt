@@ -1,0 +1,3 @@
+java -cp classes com/main/PCClub
+javac -encoding=KOI8_R -d classes -cp src src\com\main\PCClub.java
+cd C:\JAVAProject\Project
