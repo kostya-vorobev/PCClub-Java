@@ -10,6 +10,10 @@ public class Client
 	private int clientId;
 	private StringBuffer fio = new StringBuffer();
 		
+	public Client()
+	{
+
+	}
 
 	public Client(int id,  String fio)
 	{

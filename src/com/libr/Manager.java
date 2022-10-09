@@ -13,6 +13,10 @@ public class Manager{
 	private StringBuffer adress = new StringBuffer();
 	private int salary;
 
+	public Manager()
+	{
+
+	}
 	public Manager(int id, String fio, String adress, int salary)
 	{
 	this.managerId = id;

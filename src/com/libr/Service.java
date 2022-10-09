@@ -13,6 +13,11 @@ public class Service {
 	private StringBuffer name = new StringBuffer();
 	private int tariff;
 
+	public  Service()
+	{
+
+	}
+
 	public  Service(int id, String name, int tariff)
 {
 	this.serviceId = id;

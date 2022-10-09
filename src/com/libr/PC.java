@@ -11,6 +11,11 @@ public class PC{
 	private int pcId;
 	private StringBuffer typePC = new StringBuffer();
 
+	public  PC()
+	{
+
+	}
+
 	public PC(int id, String typePC)
 	{
 		this.pcId = id;
