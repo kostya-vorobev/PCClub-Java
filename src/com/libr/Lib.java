@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 public class Lib {
 	
-	
+	public static int sizeString = 49;
+
 	public static int CountFillFile(String path) throws FileNotFoundException
 	{
 		int count = 1;
@@ -46,9 +47,9 @@ public class Lib {
 			path.insert(0, input.nextLine());
 			System.out.println(path);
 
-			if (path.length() < 2)
+			if (path.length() < 2 || path.length() > sizeString)
 				System.out.println("Ошибка ввода, попробуйте еще раз...\n"); // выводим сообщение об ошибке
-		} while (path.length() < 2);
+		} while (path.length() < 2|| path.length() > sizeString);
 		return;
 	}
 

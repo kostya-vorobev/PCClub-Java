@@ -36,8 +36,7 @@ class PCClub {
 				{
 					String s = "123";
 					clientTest[i] = new Client(i, s);
-				}
-				System.out.print("\033[H\033[2J");  
+				} 
 				System.out.flush(); 
 				System.out.printf("	Программный модуль учета клиентов компьютерного клуба\n\n");
 				System.out.printf("	1 - Ввод данных\n");
@@ -45,8 +44,7 @@ class PCClub {
 				System.out.printf("	6 - выход\n");
 				
 				switch (scanner.nextInt()) {
-				case 1: {
-					System.out.print("\033[H\033[2J");  
+				case 1: { 
 					System.out.flush(); 
 					System.out.printf("	Ввод данных\n\n");
 					System.out.printf("	1 - ввод данных о менеджерах\n");
@@ -57,28 +55,23 @@ class PCClub {
 					System.out.printf("	6 - выход\n");
 					switch (scanner.nextInt()) {
 					case 1: { //Ввод данных
-						System.out.print("\033[H\033[2J");
 						manager.FprintfManager("Manager.txt", "\n");
 						break;
 					}
 					case 2: { //Ввод данных
-						System.out.print("\033[H\033[2J");
 						client.FprintfClient("Client.txt", "\n");
 						break;
 					}
 					case 3: { //Ввод данных
-						System.out.print("\033[H\033[2J");
 						service.FprintfService("Service.txt", "\n");
 						break;
 					}
 					case 4: { //Ввод данных
-						System.out.print("\033[H\033[2J");
 						pc.FprintfPC("PC.txt", "\n");
 						break;
 					}
 					case 5: { //Ввод данных
 						objOrderTable.FprintfOrderTable("OrderTable.txt");
-						System.out.print("\033[H\033[2J");
 						break;
 					}
 					case 6: //Выход
@@ -90,7 +83,6 @@ class PCClub {
 					break;
 				}
 				case 2: {
-					System.out.print("\033[H\033[2J");//Главнео меню
 					System.out.printf("	Вывод данных\n\n");
 					System.out.printf("	1 - Вывод данных о менеджерах\n");
 					System.out.printf("	2 - Вывод данных о клиентах\n");
@@ -100,27 +92,22 @@ class PCClub {
 					System.out.printf("	6 - выход\n");
 					switch (scanner.nextInt()) {
 					case 1: { //Ввод данных
-						System.out.print("\033[H\033[2J");
 						manager.PrintfFromFileManager("Manager.txt");
 						break;
 					}
 					case 2: { //Ввод данных
-						System.out.print("\033[H\033[2J");
 						client.PrintfFromFileClient("Client.txt");
 						break;
 					}
 					case 3: { //Ввод данных
-						System.out.print("\033[H\033[2J");
 						service.PrintfFromFileService("Service.txt");
 						break;
 					}
 					case 4: { //Ввод данных
-						System.out.print("\033[H\033[2J");
 						pc.PrintfFromFilePC("PC.txt");
 						break;
 					}
 					case 5: { //Ввод данных
-						System.out.print("\033[H\033[2J");
 						objOrderTable.PrintfFromFileOrderTable("OrderTable.txt");
 	
 						break;
@@ -137,7 +124,6 @@ class PCClub {
 					flag = 1;
 				}
 			} while (flag != 1);
-			System.out.print("\033[H\033[2J");
 			// вывод результата
 			
 			// вывод результата
