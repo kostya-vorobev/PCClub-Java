@@ -108,7 +108,7 @@ public void ScanfService() throws FileNotFoundException {
 
 	this.serviceId = Lib.CountFillFile("Service.txt");
 	do {
-		Lib.InputString(this.name, "¬ведите название услуги: ", 49);
+		Lib.InputString(this.name, "¬ведите название услуги: ");
 		System.out.println(this.name);
 	} while (!Lib.IsWord(this.name));
 	do {

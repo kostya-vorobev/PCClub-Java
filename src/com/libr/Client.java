@@ -145,7 +145,7 @@ public class Client
 	{
 		this.clientId = Lib.CountFillFile("Client.txt");
 		do {
-			Lib.InputString(this.fio, "Введите ФИО клиента: ", 49);
+			Lib.InputString(this.fio, "Введите ФИО клиента: ");
 			System.out.println(this.fio);
 		} while (!Lib.IsName(this.fio));
 	}

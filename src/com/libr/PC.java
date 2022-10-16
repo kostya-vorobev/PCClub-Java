@@ -95,7 +95,7 @@ public class PC{
 
 		this.pcId = Lib.CountFillFile("Manager.txt");
 		do {
-			Lib.InputString(this.typePC, "Введите тип ПК: ", 49);
+			Lib.InputString(this.typePC, "Введите тип ПК: ");
 			System.out.println(this.typePC);
 		} while (!Lib.IsWord(this.typePC));
 	}

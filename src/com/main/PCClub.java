@@ -15,6 +15,9 @@ class PCClub {
 		int count = lib.CountFillFile(path1);
 		System.out.println(count);
 		PC pc = new PC(1,  "Виталик");
+		PC pc2[] = new PC[2];
+		pc2[0] = new PC(2, "Андрей");
+		pc2[1] = new PC(3, "Евгений");
 		Service service = new Service(1, "123", 1);
 		Client client = new Client(1, "123");
 		Manager manager = new Manager(1, "123", "123", 2100);

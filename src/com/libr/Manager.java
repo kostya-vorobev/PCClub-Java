@@ -128,12 +128,12 @@ public void ScanfManager() throws FileNotFoundException
 {
 	this.managerId = Lib.CountFillFile("Manager.txt");
 	do {
-		Lib.InputString(this.fio, "Введите ФИО мененджера: ", 49);
+		Lib.InputString(this.fio, "Введите ФИО мененджера: ");
 		System.out.println(this.fio);
 	} while (!Lib.IsName(this.fio));
 
 	do {
-		Lib.InputString(this.adress, "Введите адрес мененджера: ", 49);
+		Lib.InputString(this.adress, "Введите адрес мененджера: ");
 		System.out.println(this.adress);
 	} while (!Lib.IsWord(this.adress));
 	do {

@@ -220,8 +220,8 @@ public void ScanfOrderTable() throws FileNotFoundException
 		this.pc.ScanfPC();
 		this.pc.FprintfPC("PC.txt", "\n");
 	}
-	Lib.InputString(this.startTime, "¬ведите врем€ начала аренды: : ", 9);
-	Lib.InputString(this.finishTime, "¬ведите врем€ конца аренды: ", 9);
+	Lib.InputString(this.startTime, "¬ведите врем€ начала аренды: : ");
+	Lib.InputString(this.finishTime, "¬ведите врем€ конца аренды: ");
 	this.service.PrintfFromFileService("Service.txt");
 	if (Lib.CountFillFile("Service.txt") >= 1)
 		this.service.SearchService();

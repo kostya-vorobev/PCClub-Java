@@ -38,7 +38,7 @@ public class Lib {
 		PrintfLine(20);
 	}
 
-	public static void InputString(StringBuffer path,  String msg, int size)//ввод записей
+	public static void InputString(StringBuffer path,  String msg)//ввод записей
 	{
 		Scanner input = new Scanner(System.in, "cp866");
 		do {
