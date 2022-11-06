@@ -9,7 +9,7 @@ import com.libr.Lib;
 public class PC{
 
 	private int pcId;
-	private StringBuffer typePC = new StringBuffer();
+	private String typePC = new String();
 
 	public  PC()
 	{
@@ -19,20 +19,13 @@ public class PC{
 	public PC(int id, String typePC)
 	{
 		this.pcId = id;
-		if(this.typePC.length()>0){
-			this.typePC.delete(0, this.typePC.length());
-			this.typePC.insert(0, typePC);
-			}
-			else{
-				this.typePC.insert(0, typePC);
-			}
+		this.typePC = new String(typePC);
 	}
 
 	public void CopyPC(PC objPC)
 	{
 		this.pcId = objPC.pcId;
-		this.typePC.delete(0, this.typePC.length());
-		this.typePC.insert(0, objPC.typePC);
+		this.typePC = new String(objPC.typePC);
 	}
 
 	public int GetidPC()
@@ -50,10 +43,9 @@ public class PC{
 		this.pcId = id;
 	}
 
-	public void SetTypePC(String newTypePC[])
+	public void SetTypePC(String newTypePC)
 	{
-		this.typePC.delete(0, this.typePC.length());
-		this.typePC.insert(0, newTypePC);
+		this.typePC = new String(newTypePC);
 	}
 
 	public void FprintfPC(String fileName, String endString)
@@ -106,8 +98,7 @@ public class PC{
 		//System.out.System.out.printf(line);
 		String[] words = line.split(" ;");
 		this.pcId = Integer.parseInt(words[0]);
-		this.typePC.delete(0, this.typePC.length());
-		this.typePC.insert(0, words[1]);
+		this.typePC = new String(words[1]);
 
 	}
 
@@ -185,8 +176,7 @@ public class PC{
 	public void FscanfPCOT(String id, String typePC)
 	{
 		this.pcId = Integer.parseInt(id.trim());
-		this.typePC.delete(0, this.typePC.length());
-		this.typePC.insert(0, typePC);
+		this.typePC = new String(typePC);
 		return;
 	}
 	

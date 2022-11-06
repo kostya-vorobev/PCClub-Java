@@ -9,8 +9,8 @@ import com.libr.Lib;
 
 public class Manager{
 	private int managerId;
-	private StringBuffer fio = new StringBuffer();
-	private StringBuffer adress = new StringBuffer();
+	private String fio = new String();
+	private String adress = new String();
 	private int salary;
 
 	public Manager()
@@ -20,30 +20,16 @@ public class Manager{
 	public Manager(int id, String fio, String adress, int salary)
 	{
 	this.managerId = id;
-	if(this.fio.length()>0){
-	this.fio.delete(0, this.fio.length());
-	this.fio.insert(0, fio);
-	}
-	else{
-		this.fio.insert(0, fio);
-	}
-	if(this.adress.length()>0){
-		this.adress.delete(0, this.adress.length());
-		this.adress.insert(0, adress);
-	}
-	else{
-		this.adress.insert(0, adress);
-	}
+	this.fio = new String(fio);
+	this.adress = new String(adress);
 	this.salary = salary;
 }
 
 public void CopyManager(Manager objManager)
 {
 	this.managerId = objManager.managerId;
-	this.fio.delete(0, this.fio.length());
-	this.fio.insert(0, objManager.fio);
-	this.adress.delete(0, this.adress.length());
-	this.adress.insert(0, objManager.fio);
+	this.fio = new String(objManager.fio);
+	this.adress = new String(objManager.adress);
 	this.salary = objManager.salary;
 }
 
@@ -74,14 +60,12 @@ public void SetIDManager(int id)
 
 public void SetFIOManager(String fio)
 {
-	this.fio.delete(0, this.fio.length());
-	this.fio.insert(0, fio);
+	this.fio = new String(fio);
 }
 
 public void SetAdress(String Adress)
 {
-	this.adress.delete(0, this.adress.length());
-	this.adress.insert(0, Adress);
+	this.adress = new String(adress);
 }
 public void SetSalary(int Salary)
 {
@@ -147,10 +131,8 @@ public void FscanfManager(Scanner scanner)
 	//System.out.System.out.printf(line);
 	String[] words = line.split(" ;");
 	this.managerId = Integer.parseInt(words[0]);
-	this.fio.delete(0, this.fio.length());
-	this.fio.insert(0, words[1]);
-	this.adress.delete(0, this.adress.length());
-	this.adress.insert(0, words[2]);
+	this.fio = new String(words[1]);
+	this.adress = new String(words[2]);
 	this.salary = Integer.parseInt(words[3].trim());
 
 }
@@ -234,10 +216,8 @@ public boolean SearchManager(String find)
 void FscanfManagerOT(String id, String fio, String adress, String salary)
 {
 	this.managerId = Integer.parseInt(id.trim());
-	this.fio.delete(0, this.fio.length());
-	this.fio.insert(0, fio);
-	this.adress.delete(0, this.adress.length());
-	this.adress.insert(0, fio);
+	this.fio = new String(fio);
+	this.adress = new String(adress);
 	this.salary = Integer.parseInt(salary.trim());
 	return;
 }

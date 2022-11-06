@@ -14,8 +14,8 @@ public class OrderTable{
 	private PC pc = new PC(0, "");
 	private Service service = new Service(0, "", 0);
 	private Client client = new Client(0, "");
-	private StringBuffer startTime = new StringBuffer();
-	private StringBuffer finishTime = new StringBuffer();
+	private String startTime = new String();
+	private String finishTime = new String();
 	private int cost;
 	
 public OrderTable()
@@ -26,20 +26,8 @@ public OrderTable(int id, PC pcData, String startTime, String finishTime, Servic
 {
 	this.orderTableId = id;
 	this.pc.CopyPC(pcData);
-	if(this.startTime.length()>0){
-	this.startTime.delete(0, this.startTime.length());
-	this.startTime.insert(0, startTime);
-	}
-	else{
-		this.startTime.insert(0, startTime);
-	}
-	if(this.finishTime.length()>0){
-		this.finishTime.delete(0, this.finishTime.length());
-		this.finishTime.insert(0, finishTime);
-	}
-	else{
-		this.finishTime.insert(0, finishTime);
-	}
+	this.startTime = new String(startTime);
+	this.finishTime = new String(finishTime);
 	this.service.CopyService(servicesData);
 	this.client.CopyClient(clientData);
 	this.cost = cost;
@@ -113,14 +101,12 @@ public void SetIDOrderTable(int id)
 
 public void SetStartTime(String time)
 {
-	this.startTime.delete(0, this.startTime.length());
-	this.startTime.insert(0, time);
+	this.startTime = new String(time);
 }
 
 public void SetFinishTime(String time)
 {
-	this.finishTime.delete(0, this.finishTime.length());
-	this.finishTime.insert(0, time);
+	this.finishTime = new String(time);
 }
 
 public void SetCost(int cost)
@@ -152,7 +138,7 @@ public void FprintfOrderTable(String fileName)
 			fileWriter.write(this.service.GetName() + " ;");
 			fileWriter.write(this.service.GetTariff() + " ;");
 			fileWriter.write(this.client.GetIDClient() + " ;");
-			fileWriter.write(this.client.GetFIOClient() + " ;");
+			fileWriter.write(this.client.GetFio() + " ;");
 			fileWriter.write(this.cost + " ;");
 			fileWriter.write(this.manager.GetIDManager() + " ;");
 			fileWriter.write(this.manager.GetFIOManager() + " ;");
@@ -168,7 +154,7 @@ public void PrintfOrderTable()//вывод всех записей
 {
 	if (this.orderTableId != 0) {
 		System.out.printf("|%-3d", this.orderTableId);
-		System.out.printf("|%-25s", this.client.GetFIOClient());
+		System.out.printf("|%-25s", this.client.GetFio());
 		System.out.printf("|%-25s", this.pc.GetTypePC());
 		System.out.printf("|%-12s", this.startTime);
 		System.out.printf("|%-10s", this.finishTime);
@@ -256,10 +242,8 @@ public void FscanfOrderTable(Scanner scanner)
 	String[] words = line.split(" ;");
 	this.orderTableId = Integer.parseInt(words[0]);
 	this.pc.FscanfPCOT(words[1], words[2]);
-	this.startTime.delete(0, this.startTime.length());
-	this.startTime.insert(0, words[3]);
-	this.finishTime.delete(0, this.finishTime.length());
-	this.finishTime.insert(0, words[4]);
+	this.startTime = new String(words[3]);
+	this.finishTime = new String(words[4]);
 	this.service.FscanfServiceOT(words[5], words[6], words[7]);
 	this.client.FscanfClientOT(words[8], words[9]);
 	this.cost = Integer.parseInt(words[10].trim());

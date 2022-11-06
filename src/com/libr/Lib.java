@@ -2,6 +2,7 @@ package com.libr;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Scanner;
 
@@ -11,16 +12,21 @@ public class Lib {
 
 	public static int CountFillFile(String path) throws FileNotFoundException
 	{
-		int count = 1;
-		File f = new File(path);
-		Scanner scanner = new Scanner(f);
-		while(scanner.hasNextLine())
-		{
-			scanner.nextLine();
-			count++;
+		try{
+			int count = 1;
+			File f = new File(path);
+			Scanner scanner = new Scanner(f);
+			while(scanner.hasNextLine())
+			{
+				scanner.nextLine();
+				count++;
+			}
+			scanner.close();
+			return count;
+		}catch (IOException e) {
+			System.out.println(e.getMessage());
+			return 0;
 		}
-		scanner.close();
-		return count;
 
 	}
 
@@ -38,13 +44,12 @@ public class Lib {
 		PrintfLine(20);
 	}
 
-	public static void InputString(StringBuffer path,  String msg)//ввод записей
+	public static void InputString(String path,  String msg)//ввод записей
 	{
 		Scanner input = new Scanner(System.in, "cp866");
 		do {
 			System.out.println(msg);
-			path.delete(0, path.length());
-			path.insert(0, input.nextLine());
+			path = new String(input.nextLine());
 			System.out.println(path);
 
 			if (path.length() < 2 || path.length() > sizeString)
@@ -53,7 +58,7 @@ public class Lib {
 		return;
 	}
 
-	public static boolean IsName(StringBuffer path) {
+	public static boolean IsName(String path) {
 		int flag = 0;
 		for (int i = 0; i < path.length(); i++)
 		{
@@ -108,7 +113,7 @@ public class Lib {
 		return n; // возвращаем корректное целое число
 	}
 
-	public static boolean IsWord(StringBuffer path) {
+	public static boolean IsWord(String path) {
 		for (int i = 0; i < path.length(); i++)
 		{
 			if (path.charAt(i) != ' '&& path.charAt(i) != ' ')

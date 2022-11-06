@@ -10,7 +10,7 @@ import com.libr.Lib;
 public class Service {
 
 	private int serviceId;
-	private StringBuffer name = new StringBuffer();
+	private String name = new String();
 	private int tariff;
 
 	public  Service()
@@ -21,21 +21,14 @@ public class Service {
 	public  Service(int id, String name, int tariff)
 {
 	this.serviceId = id;
-	if(this.name.length()>0){
-	this.name.delete(0, this.name.length());
-	this.name.insert(0, name);
-	}
-	else{
-		this.name.insert(0, name);
-	}
+	this.name = new String(name);
 	this.tariff = tariff;
 }
 
 public void CopyService(Service objService)
 {
 	this.serviceId = objService.serviceId;
-	this.name.delete(0, this.name.length());
-	this.name.insert(0, objService.name);
+	this.name = new String(objService.name);
 	this.tariff = objService.tariff;
 }
 
@@ -59,10 +52,9 @@ public void SetIDService(int ID)
 	this.serviceId = ID;
 }
 
-public void SetName(String newName[])
+public void SetName(String newName)
 {
-	this.name.delete(0, this.name.length());
-	this.name.insert(0, newName);
+	this.name = new String(newName);
 }
 
 public void SetTariff(int newTariff)
@@ -122,8 +114,7 @@ public void FscanfService(Scanner scanner)
 	//System.out.System.out.printf(line);
 	String[] words = line.split(" ;");
 	this.serviceId = Integer.parseInt(words[0]);
-	this.name.delete(0, this.name.length());
-	this.name.insert(0, words[1]);
+	this.name = new String(words[1]);
 	this.tariff = Integer.parseInt(words[2].trim());
 }
 
@@ -207,8 +198,7 @@ public void PrintfTitleService() {
 public void FscanfServiceOT(String id, String name, String tariff)
 {
 	this.serviceId = Integer.parseInt(id.trim());
-	this.name.delete(0, this.name.length());
-	this.name.insert(0, name);
+	this.name = new String(name);
 	this.tariff = Integer.parseInt(tariff.trim());
 	return;
 }

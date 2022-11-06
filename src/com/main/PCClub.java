@@ -8,8 +8,36 @@ import com.libr.Service;
 
 class PCClub {
 
+
 	public static void main(String[] args) throws FileNotFoundException, java.io.IOException
 	{
+        Client client=new Client(1,"Mike");
+        ClientHuman clientHuman=new ClientHuman(1,"Mike", 1, 15, "1235");
+		try{
+        	Client clone = (Client) client.clone();
+			client.PrintfClient();
+			clone.PrintfClient();
+			client.SetFio("Ivan");
+			clone.SetIDClient(2);
+			client.PrintfClient();
+			clone.PrintfClient();
+		} catch(CloneNotSupportedException e){
+			e.printStackTrace();
+		}
+
+		try{
+        	ClientHuman clone = (ClientHuman) clientHuman.clone();
+			clientHuman.PrintfClient();
+			clone.PrintfClient();
+			clientHuman.SetFio("Ivan");
+			clone.SetAcc("52434");
+			clientHuman.PrintfClient();
+			clone.PrintfClient();
+		} catch(CloneNotSupportedException e){
+			e.printStackTrace();
+		}
+
+
 		Lib lib = new Lib();
 		String path1 = "OrderTable.txt";
 		int count = lib.CountFillFile(path1);
@@ -19,7 +47,7 @@ class PCClub {
 		pc2[0] = new PC(2, "Андрей");
 		pc2[1] = new PC(3, "Евгений");
 		Service service = new Service(1, "123", 1);
-		Client client = new Client(1, "123");
+		//Client client = new Client(1, "123");
 		Manager manager = new Manager(1, "123", "123", 2100);
 		//OrderTable orderTable = new OrderTable(1, pc, "12:00", "13:00", service, client, 125, manager);
 		OrderTable objOrderTable = new OrderTable();
