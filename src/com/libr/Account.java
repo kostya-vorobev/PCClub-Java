@@ -11,4 +11,11 @@ class Account<T>
     public Account(T id) { this.id = id; }
     public Account() { }
     public T GetId() {return id;}
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "ACC=" + id +
+                '}';
+    }
 };

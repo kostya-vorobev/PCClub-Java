@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.Scanner;
 
 import com.libr.Client;
@@ -92,4 +93,20 @@ public void PrintTitle() {
 }
 
 
+	@Override
+	public String toString() {
+		return "ClientHuman{" +
+				"gender=" + gender +
+				", age=" + age +
+				", sizeLine=" + sizeLine +
+				", acc=" + acc.toString() +
+				", clientId=" + clientId +
+				", fio='" + fio + '\'' +
+				'}';
+	}
+
+	@Override
+	public Comparator<Client> reversed() {
+		return super.reversed();
+	}
 }

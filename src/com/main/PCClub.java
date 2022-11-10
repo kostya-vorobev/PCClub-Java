@@ -1,7 +1,8 @@
 package com.main;
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 import java.io.IOException;
+
 import com.libr.*;
 import com.libr.Service;
 
@@ -11,8 +12,29 @@ class PCClub {
 
 	public static void main(String[] args) throws FileNotFoundException, java.io.IOException
 	{
+		Vector clientTest = new Vector();
+		Client.FscanfFile(clientTest, "Client.txt");
+		clientTest.add(new ClientHuman(1, "dor", 1, 1, "123"));
+		System.out.println(clientTest.toString());
+		Collections.sort(clientTest,new Comparator<Client>() {
+			@Override
+			public int compare(Client lhs, Client rhs) {
+				return -lhs.GetIDClient()+rhs.GetIDClient();
+			}
+		});
+		System.out.println(clientTest.toString());
+
+		Client[][] client1 = new Client[2][2];
+		client1[0][0] = new Client(1, "tass");
+		client1[0][1] = new Client(2, "tass");
+		client1[1][0] = new Client(3, "tass");
+		client1[0][1] = new Client(4, "tass");
+		Client[][] client2 = client1;
+		client2 = client1;
+		System.out.println(client2.toString());
         Client client=new Client(1,"Mike");
         ClientHuman clientHuman=new ClientHuman(1,"Mike", 1, 15, "1235");
+		System.out.println(clientHuman.toString());
 		try{
         	Client clone = (Client) client.clone();
 			client.PrintfClient();
@@ -62,11 +84,11 @@ class PCClub {
 					managerTest[i] = new Manager(i+1, "123", s, i);
 				}
 				flag = 0;
-				Client[] clientTest = new Client[2];
+				Client[] clientTest3 = new Client[2];
 				for (int i = 0; i < 2; i++)
 				{
 					String s = "123";
-					clientTest[i] = new Client(i, s);
+					clientTest3[i] = new Client(i, s);
 				} 
 				System.out.flush(); 
 				System.out.printf("	Программный модуль учета клиентов компьютерного клуба\n\n");

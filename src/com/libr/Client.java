@@ -3,14 +3,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.Scanner;
 import java.lang.*;
-
-import com.libr.IBase;
-
+import java.util.Vector;
 
 
-public class Client implements IBase, Cloneable
+public class Client implements IBase, Cloneable, Comparator<Client>
 {
 	protected int clientId;
 	protected String fio = new String();
@@ -56,11 +55,12 @@ public class Client implements IBase, Cloneable
 		this.fio = new String(fio);
 	}
 
-	public void FscanfClient(Scanner scanner)
+	public void FscanfClient(Scanner scanner) throws MyException
 	{
 		String line = scanner.nextLine();
 		//System.out.printf(line);
 		String[] words = line.split(" ;");
+		if(words.length != 2) throw new MyException("Файл был поврежден");
 		this.clientId = Integer.parseInt(words[0]);
 		this.fio = new String(words[1]);
 	}
@@ -92,7 +92,7 @@ public class Client implements IBase, Cloneable
 				else Lib.PrintfNullS();
 				
 			}
-		}catch(final IOException ex){
+		}catch(final IOException | MyException ex){
              
             System.out.println(ex.getMessage());
 		} 
@@ -179,7 +179,7 @@ public class Client implements IBase, Cloneable
 				}
 				scanner.close();
 			} while (this.clientId != searchId);
-		}catch (IOException e) {
+		}catch (IOException | MyException e) {
 			System.out.println(e.getMessage());
 		}
 	};
@@ -203,6 +203,48 @@ public class Client implements IBase, Cloneable
 		return;
 	}
 
+	public static void FscanfFile(Vector client, String fileName) throws FileNotFoundException
+	{
+		Client clientBuffer = new Client();
+		try{
+			File f = new File(fileName);
+			if (f.isFile()) {
+				Lib lib = new Lib();
+				if (lib.CountFillFile(fileName)>0) {
+					Scanner scanner = new Scanner(f);
+					while (scanner.hasNextLine()) {
+						clientBuffer.FscanfClient(scanner);
+						client.add(clientBuffer.clone());
+					}
+					scanner.close();
+				}
+				else Lib.PrintfNullS();
 
+			}
+		}catch(final IOException | MyException ex){
+
+			System.out.println(ex.getMessage());
+		} catch (CloneNotSupportedException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public int compare(Client lhs, Client rhs) {
+		return -lhs.clientId+rhs.clientId;
+	}
+
+	public void InitClient(int id, String fio) {
+		this.clientId = id;
+		this.fio = new String(fio);
+		return;
+	}
+
+	@Override
+	public String toString() {
+		return "Client{" +
+				"clientId=" + clientId +
+				", fio='" + fio + '\'' +
+				'}';
+	}
 };
 
